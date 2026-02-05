@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - AI Employee{% endblock %}
+
+{% block content %}
+<h1>AI Employee Dashboard</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number">{{ counts.needs_action }}</div>
+        <div class="stat-label">Needs Action</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">{{ counts.pending_approval }}</div>
+        <div class="stat-label">Pending Approval</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">{{ counts.approved }}</div>
+        <div class="stat-label">Approved</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">{{ counts.done }}</div>
+        <div class="stat-label">Done</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">{{ counts.rejected }}</div>
+        <div class="stat-label">Rejected</div>
+    </div>
+</div>
+
+{% if dashboard_content %}
+<div class="card">
+    <h2>Dashboard Overview</h2>
+    <div class="markdown-content">
+        {{ dashboard_content|safe }}
+    </div>
+</div>
+{% endif %}
+
+<div class="card">
+    <h2>Recent Activity</h2>
+    {% if activity %}
+    <table>
+        <thead>
+            <tr>
+                <th>Filename</th>
+                <th>Directory</th>
+                <th>Last Modified</th>
+                <th>Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in activity %}
+            <tr>
+                <td>{{ item.filename }}</td>
+                <td>{{ item.directory }}</td>
+                <td>{{ item.modified }}</td>
+                <td>{{ item.size }} bytes</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="empty-state">No recent activity found.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

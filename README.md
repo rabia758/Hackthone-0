@@ -1,91 +1,231 @@
-# Personal AI Employee
+🚀 Personal AI Employee – Hackathon 0
 
-A local-first, agent-driven, human-in-the-loop AI employee that monitors Gmail, WhatsApp, file drops, and manages business tasks.
+Building Autonomous Digital FTEs (Full-Time Equivalents)
 
-## Overview
+Tagline:
 
-The Personal AI Employee is designed to act as a proactive consultant with human-in-the-loop approvals for sensitive actions. It monitors multiple communication channels simultaneously and manages tasks according to predefined business rules.
+Your life and business on autopilot — local-first, agent-driven, human-in-the-loop.
 
-## Features
+📌 Overview
 
-- **Multi-channel Monitoring**: Watches Gmail, WhatsApp, and filesystem for new information
-- **Task Management**: Automatically categorizes and routes tasks to appropriate folders
-- **Approval System**: Implements human-in-the-loop controls for sensitive actions
-- **Local-first Architecture**: Prioritizes local processing for privacy and reliability
-- **Audit Trail**: Comprehensive logging of all actions and decisions
+This project implements a Personal AI Employee (Digital FTE) — an autonomous, local-first AI system that proactively manages personal and business workflows such as:
 
-## Architecture
+Emails & messages
 
-The system consists of several key components:
+Social media drafts & approvals
 
-- **Orchestrator**: Main coordinator that manages all subsystems
-- **Watchers**: Monitor different channels (Gmail, WhatsApp, Filesystem)
-- **Approval System**: Handles business rules for human approvals
-- **Vault**: Organized folder structure for task management
+Task planning
 
-## Configuration
+Accounting & audits
 
-Configuration is managed through environment variables in the `.env` file. Key settings include:
+CEO-style weekly briefings
 
-- Polling intervals for each watcher
-- Priority keywords for urgent task identification
-- Approval thresholds for payments and other sensitive actions
-- Vault path for task organization
+Unlike chatbots, this AI does not wait for prompts.
+It continuously monitors events, reasons about them, and requests human approval before executing sensitive actions.
 
-## Approval Rules
+This project was built as part of Hackathon 0: Building Autonomous FTEs (2026).
 
-The system implements the following approval rules:
+🧠 Core Idea: Digital FTE
 
-- Payments over $100 require human approval
-- Invoices to new clients require approval
-- Bulk email sends require approval
-- Large social media posts require approval
-- Small email replies and routine tasks are auto-approved
+A Digital FTE is an AI agent treated like a real employee:
 
-## Vault Structure
+Feature	Human FTE	Digital FTE
+Availability	40 hrs/week	24/7 (168 hrs/week)
+Cost	$4k–$8k/month	$500–$2k/month
+Consistency	Variable	Predictable
+Scaling	Linear	Instant duplication
 
-The system organizes tasks in the following folder structure:
+💡 9,000 AI working hours per year vs 2,000 human hours
 
-- `Needs_Action`: Tasks requiring attention
-- `Plans`: Planned activities
-- `Done`: Completed tasks
-- `Pending_Approval`: Tasks awaiting human approval
-- `Approved`: Tasks approved by human
-- `Rejected`: Tasks rejected by human
-- `Logs`: System logs and audit trails
-- `Invoices`: Invoice-related tasks
-- `Updates`: Status updates
+🏗️ System Architecture
 
-## Installation
+This system follows a Perception → Reasoning → Action model.
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Configure environment variables in `.env`
-4. Build the project: `npm run build`
-5. Run the application: `npm start`
+1️⃣ Perception (Watchers)
 
-## Development
+Python scripts continuously monitor:
 
-For development, use:
+Gmail
 
-```bash
-npm run dev
-```
+WhatsApp
 
-This will start the application with hot reloading.
+Local file drops
 
-## Security
+Accounting files
 
-- Credentials are stored securely using environment variables
-- All sensitive actions require human approval
-- Comprehensive audit logging is maintained
-- Local-first architecture minimizes exposure to external services
+They create structured .md files inside the Obsidian vault.
 
-## Contributing
+2️⃣ Reasoning (Claude Code)
 
-Please follow the Spec-Driven Development (SDD) approach:
+Claude Code acts as the brain:
 
-1. Create specifications in `specs/` directory
-2. Develop implementation plans
-3. Break work into testable tasks
-4. Implement with comprehensive testing
+Reads vault files
+
+Creates plans
+
+Generates drafts
+
+Requests approvals
+
+Updates dashboard
+
+Uses the Ralph Wiggum Loop to keep working until tasks are complete.
+
+3️⃣ Action (MCP + HITL)
+
+Actions are executed only after human approval:
+
+Email sending
+
+Social posting
+
+Payments
+
+External system updates
+
+📁 Obsidian Vault Structure
+AI_Employee_Vault/
+│
+├── Dashboard.md
+├── Company_Handbook.md
+├── Business_Goals.md
+│
+├── Needs_Action/
+│   ├── EMAIL_*.md
+│   ├── WHATSAPP_*.md
+│   └── FILE_*.md
+│
+├── Pending_Approval/
+├── Approved/
+├── Rejected/
+├── Done/
+│
+├── social/
+│   ├── Draft/
+│   ├── Posted/
+│
+├── Logs/
+├── Invoices/
+└── Updates/
+
+
+📌 Vault = Database + Memory + UI State
+
+🖥️ Frontend (Human Control Panel)
+
+A local web UI built with Flask + HTML/CSS:
+
+Features
+
+📊 Dashboard (renders Dashboard.md)
+
+⏳ Pending approvals (Approve / Reject buttons)
+
+📥 Needs Action viewer
+
+📝 Social media draft preview
+
+📜 Audit logs viewer
+
+⚠️ UI never executes actions — it only moves files (HITL safety).
+
+🔐 Human-in-the-Loop (HITL)
+
+For sensitive actions, the AI creates approval files:
+
+/Pending_Approval/PAYMENT_ClientA_2026_01_07.md
+
+
+Human decision:
+
+✅ Move to /Approved
+
+❌ Move to /Rejected
+
+The orchestrator then executes the action safely.
+
+🔄 Ralph Wiggum Loop (Autonomy Engine)
+
+Claude is prevented from exiting until the task is complete.
+
+Completion strategies:
+
+File moved to /Done
+
+Explicit completion promise
+
+This solves the “lazy agent” problem.
+
+🔧 Tech Stack
+Layer	Technology
+Reasoning	Claude Code
+Memory / UI	Obsidian (Markdown)
+Watchers	Python
+Orchestration	Python
+External Actions	MCP Servers
+UI	Flask + HTML/CSS
+Automation	PM2 / Task Scheduler
+🛡️ Security & Privacy
+
+🔒 Local-first (no cloud dependency)
+
+❌ Secrets never stored in vault
+
+✅ .env for credentials (git-ignored)
+
+🧾 Full audit logging
+
+🛑 No auto-payments or auto-posts
+
+🏆 Hackathon Tier
+
+Target Tier:
+🥇 Gold → Platinum Ready
+
+Implemented:
+
+Watchers
+
+Approval workflow
+
+Claude reasoning
+
+Vault-driven UI
+
+Audit logs
+
+Autonomous planning
+
+▶️ How to Run (Local)
+# Clone repo
+git clone https://github.com/rabia758/Hackthone-0.git
+cd Hackthone-0
+
+# Setup environment
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+
+# Run UI
+python app.py
+
+
+Open browser:
+
+http://127.0.0.1:5000
+
+📅 Research & Learning Sessions
+
+
+👩‍💻 Author
+
+Rabia Rizwan
+AI Engineer | Agent Architect | Digital FTE Builder
+
+🌟 Final Note
+
+This project is not a chatbot.
+It is a thinking, planning, auditing, approval-aware AI employee.
+
+Software runs tasks.
+Digital FTEs run businesses.

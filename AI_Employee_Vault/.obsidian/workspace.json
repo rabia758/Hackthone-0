@@ -11,10 +11,14 @@
             "id": "55551e98bb103d43",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Needs_Action/SOCIAL_PROMO_2026_01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SOCIAL_PROMO_2026_01"
             }
           }
         ]
@@ -176,18 +180,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "d34cbe0ab4c27279",
+  "active": "55551e98bb103d43",
   "lastOpenFiles": [
     "social/Draft/Readme.md",
+    "Welcome.md",
+    "Dashboard.md",
     "Pending_Approval/SOCIAL_DRAFT_2026_02_05.md",
     "Needs_Action/SOCIAL_PROMO_2026_01.md",
     "social/Posted",
     "social/Draft",
     "social",
-    "Welcome.md",
     "Business_Goals.md",
     "Company_Handbook.md",
-    "Dashboard.md",
     "src/watchers/WhatsAppWatcher.ts",
     "src/watchers/GmailWatcher.ts",
     "src/watchers/FilesystemWatcher.ts",

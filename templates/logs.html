@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Logs - AI Employee{% endblock %}
+
+{% block content %}
+<h1>Activity Logs</h1>
+
+<div class="card">
+    <p>Showing last 50 log entries:</p>
+</div>
+
+{% if logs %}
+<table>
+    <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Action</th>
+            <th>Filename</th>
+            <th>Source Directory</th>
+            <th>Destination Directory</th>
+            <th>User</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.timestamp }}</td>
+            <td>{{ log.action }}</td>
+            <td>{{ log.filename }}</td>
+            <td>{{ log.source_directory }}</td>
+            <td>{{ log.destination_directory }}</td>
+            <td>{{ log.user }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="empty-state">
+    <p>No logs found.</p>
+</div>
+{% endif %}
+
+{% endblock %}

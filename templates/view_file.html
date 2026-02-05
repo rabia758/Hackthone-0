@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ filename }} - AI Employee{% endblock %}
+
+{% block content %}
+<a href="javascript:history.back()" class="back-link">← Back</a>
+
+<h1>{{ filename }}</h1>
+
+<div class="markdown-content">
+    {{ content|safe }}
+</div>
+
+<div class="file-actions">
+    {% if '/Pending_Approval/' in filepath %}
+    <form method="POST" action="{{ url_for('approve_file') }}" style="display: inline;">
+        <input type="hidden" name="filepath" value="{{ filepath }}">
+        <button type="submit" class="btn btn-success approve-btn">Approve</button>
+    </form>
+    <form method="POST" action="{{ url_for('reject_file') }}" style="display: inline;">
+        <input type="hidden" name="filepath" value="{{ filepath }}">
+        <button type="submit" class="btn btn-danger reject-btn">Reject</button>
+    </form>
+    {% elif '/social/Draft/' in filepath %}
+    <form method="POST" action="{{ url_for('send_for_approval') }}" style="display: inline;">
+        <input type="hidden" name="filepath" value="{{ filepath }}">
+        <button type="submit" class="btn btn-warning">Send for Approval</button>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}
