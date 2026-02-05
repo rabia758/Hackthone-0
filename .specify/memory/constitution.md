@@ -1,55 +1,65 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Personal AI Employee Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Human-in-the-Loop Control
+Critical business decisions require explicit human approval. The AI employee acts as an autonomous assistant but defers to human judgment for sensitive actions like payments over $100, invoices to new clients, bulk emails, and large social posts. This ensures accountability and prevents unintended consequences.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Local-First Architecture
+Data and processing should occur locally when possible. Sensitive information like Gmail, WhatsApp messages, and financial data should be processed on local infrastructure rather than sent to external services. This enhances privacy and reduces dependency on external APIs.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Multi-Channel Monitoring
+The system must monitor multiple communication channels simultaneously (Gmail, WhatsApp, file drops) to capture all business-relevant information. Each channel has its own polling intervals and priority keywords to ensure urgent matters are addressed promptly.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Proactive Task Management
+The AI employee should proactively categorize, prioritize, and route tasks to appropriate folders (Needs Action, Plans, Done, Pending Approval, etc.) based on business rules and priority keywords. This creates an organized workflow for human review.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Comprehensive Audit Trail
+All actions taken by the AI employee must be logged with full audit capability. This includes credential handling, decision-making processes, and executed actions. Logs must be retained for 90 days to ensure accountability and compliance.
 
-### [PRINCIPLE_6_NAME]
+### VI. Secure Credential Handling
+Credentials must be stored securely using appropriate mechanisms: environment variables for Gmail, secrets manager for banking, and local encryption for WhatsApp sessions. No plaintext credentials should be stored in the codebase.
 
+## Additional Constraints
 
-[PRINCIPLE__DESCRIPTION]
+### Technology Stack
+- Node.js/TypeScript for main orchestration
+- MCP (Model Context Protocol) for browser, email, and calendar integrations
+- File system watchers for local file monitoring
+- Local encrypted storage for sensitive session data
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Security Requirements
+- All sensitive data must be encrypted at rest
+- Audit logging for all actions
+- Human approval required for sensitive operations
+- Regular credential rotation capability
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Performance Standards
+- Polling intervals configurable per service
+- Retry strategies with exponential backoff
+- Maximum 5 concurrent tasks to avoid overwhelming systems
+- Graceful degradation when services are unavailable
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Feature Development
+- All features must follow the Spec-Driven Development (SDD) approach
+- Specifications, plans, and tasks must be documented before implementation
+- Small, testable changes with clear acceptance criteria
+- Integration tests for all watcher modules
+
+### Review Process
+- Code reviews must verify compliance with constitution
+- Security implications must be considered for all changes
+- Human-in-the-loop requirements must be preserved
+
+### Quality Gates
+- All watchers must have proper error handling and retry mechanisms
+- Approval system must be bypassed only for explicitly auto-approved actions
+- Audit logging must capture all significant operations
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+The constitution serves as the authoritative guide for all development decisions. Any changes to the core principles of human control, local-first architecture, or security requirements must be explicitly documented and approved. All pull requests and code reviews must verify compliance with these principles.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-01-01 | **Last Amended**: 2026-01-01
